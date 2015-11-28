@@ -9,17 +9,15 @@ export default class StandardMarker extends Marker {
   /*
    * time: the time in seconds that this marker represents
    * tooltipText: the text to be shown on the tooltip (optional)
-   * tooltipBottomOffset: the number of pixels above the marker to show the tooltip (optional)
    */
-  constructor(time, tooltipText, tooltipBottomOffset) {
+  constructor(time, tooltipText) {
     super()
     this._time = time
     this._tooltipText = tooltipText || null
-    this._tooltipBottomOffset = tooltipText ? tooltipBottomOffset || 100 : null
     this._$marker = this._buildMarkerEl()
     this._$tooltip = this._buildTooltipEl()
 
-    // add listeners so that tooltip is shown when mouse over marker
+    this._addListeners()
   }
 
   /*
@@ -48,18 +46,10 @@ export default class StandardMarker extends Marker {
     return this._$tooltip
   }
 
-  /*
-   * Should return the number of pixels above the marker that the
-   * tooltip should be positioned.
-   *
-   * If there is no tooltip this should return null.
-   */
-  getTooltipBottomOffset() {
-    return this._tooltipBottomOffset
-  }
-
   _buildMarkerEl() {
-    return $("<div />").addClass("standard-marker")
+    var $marker = $("<div />").addClass("standard-marker")
+    $marker.append($("<div />").addClass("standard-marker-inner"))
+    return $marker
   }
 
   _buildTooltipEl() {
@@ -67,5 +57,17 @@ export default class StandardMarker extends Marker {
       return null;
     }
     return $("<div />").addClass("standard-tooltip").text(this._tooltipText)
+  }
+
+  _addListeners() {
+    if (!this._$tooltip) {
+      return;
+    }
+
+    this._$marker.hover(() => {
+      this._$tooltip.attr("data-show", "1")
+    }, () => {
+      this._$tooltip.attr("data-show", "0")
+    })
   }
 }

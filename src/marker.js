@@ -28,14 +28,4 @@ export default class Marker {
   getTooltipEl() {
     throw "Not implemented!"
   }
-
-  /*
-   * Should return the number of pixels above the marker that the
-   * tooltip should be positioned.
-   *
-   * If there is no tooltip this should return null.
-   */
-  getTooltipBottomOffset() {
-    throw "Not implemented!"
-  }
 }

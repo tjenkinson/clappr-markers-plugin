@@ -32,8 +32,8 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'clappr-thumbnails-plugin.js',
-    library: 'ClapprThumbnailsPlugin',
+    filename: 'clappr-markers-plugin.js',
+    library: 'ClapprMarkersPlugin',
     libraryTarget: 'umd',
   },
 };

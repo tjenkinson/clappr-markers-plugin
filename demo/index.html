@@ -1,0 +1,27 @@
+<head>
+  <script type="text/javascript" src="http://cdn.clappr.io/latest/clappr.js"></script>
+  <script type="text/javascript" src="../dist/clappr-markers-plugin.js"></script>
+</head>
+<body>
+  <div id="player"></div>
+  <script>
+
+    var markers = [];
+
+    for(var i=1; i<20; i++) {
+      markers.push(new ClapprMarkersPlugin.StandardMarker(i*10, "testing 123"));
+    }
+
+    var player = new Clappr.Player({
+    	source: "http://tjenkinson.me/clappr-thumbnails-plugin/assets/video.mp4",
+    	parentId: "#player",
+    	plugins: {
+        core: [ClapprMarkersPlugin.default],
+      },
+      markersPlugin: {
+        markers: markers
+      }
+    });
+
+  </script>
+</body>

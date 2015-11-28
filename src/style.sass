@@ -1,17 +1,58 @@
 @import "compass/css3";
 
-.markers-plugin-marker {
-	.standard-marker {
+.markers-plugin {
+	.markers-plugin-markers {
+		overflow: hidden;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
 		
+		.standard-marker {
+			position: absolute;
+			@include translateX(-50%);
+			top: 2px;
+			left: 0;
+			width: 20px;
+			height: 20px;
+
+			.standard-marker-inner {
+				position: absolute;
+				left: 7.5px;
+				top: 7.5px;
+				width: 5px;
+				height: 5px;
+				border-radius: 2.5px;
+				box-shadow: 0 0 0 3px rgba(200, 200, 200, 0.2);
+				background-color: rgb(200, 200, 200);
+			}
+
+			&:hover {
+				cursor: pointer;
+				.standard-marker-inner {
+					left: 6px;
+					top: 6px;
+					width: 8px;
+					height: 8px;
+					box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.2);
+					background-color: rgb(255, 255, 255);
+				}
+			}
+		}
 	}
-}
 
-.markers-plugin-tooltip {
-	.tooltip-container {
+	.markers-plugin-tooltips {
+		.tooltip-container {
+			display: inline-block;
 
+			.standard-tooltip {
+				display: none;
 
-		.standard-tooltip {
-
+				&[data-show="1"] {
+					display: inline-block;
+				}
+			}
 		}
 	}
 }
