@@ -61,11 +61,12 @@ export default class StandardMarker extends Marker {
 
   _addListeners() {
     if (!this._$tooltip) {
-      return;
+      return
     }
 
     this._$marker.hover(() => {
       this._$tooltip.attr("data-show", "1")
+      // TODO call reposition
     }, () => {
       this._$tooltip.attr("data-show", "0")
     })
