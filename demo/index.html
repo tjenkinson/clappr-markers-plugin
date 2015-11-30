@@ -6,10 +6,25 @@
   <div id="player"></div>
   <script>
 
+    var markerInfo = [
+      [0, "Incredible Arial Shots"],
+      [13, "Good Morning Lancaster"],
+      [25, "SugarTV"],
+      [37, "The LA1 Show"],
+      [56, "Soundbooth"],
+      [75, "Jailbreak"],
+      [87, "Charity Showcase"],
+      [96, "Strictly Cha Cha Chat!"],
+      [102, "Roses"],
+      [116, "The Studio!"],
+      [167, "Closing Sequence"]
+    ];
+
     var markers = [];
 
-    for(var i=1; i<20; i++) {
-      markers.push(new ClapprMarkersPlugin.StandardMarker(i*10, "testing 123"));
+    for(var i=0; i<markerInfo.length; i++) {
+      var info = markerInfo[i];
+      markers.push(new ClapprMarkersPlugin.StandardMarker(info[0], info[1]));
     }
 
     var player = new Clappr.Player({

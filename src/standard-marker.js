@@ -66,7 +66,7 @@ export default class StandardMarker extends Marker {
 
     this._$marker.hover(() => {
       this._$tooltip.attr("data-show", "1")
-      // TODO call reposition
+      this.notifyTooltipChanged()
     }, () => {
       this._$tooltip.attr("data-show", "0")
     })

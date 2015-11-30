@@ -1,7 +1,30 @@
+import EventEmitter from 'event-emitter'
+
 /*
  * This represents and Marker and should be extended.
  */
 export default class Marker {
+
+  constructor() {
+    this._emitter = new EventEmitter({})
+  }
+
+  /*
+   * Get the event emitter.
+   * Used by the plugin and notifyTooltipChanged() method
+   */
+  getEmitter() {
+    return this._emitter
+  }
+
+  /*
+   * Call this to notify the plugin that the contents of the tooltip
+   * has changed so that's position can be recalculated and changed
+   * if necessary.
+   */
+  notifyTooltipChanged() {
+    this._emitter.emit("tooltipChanged")
+  }
 
   /*
    * Should return the time (in seconds) that this marker represents.

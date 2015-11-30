@@ -2,7 +2,6 @@ import {UICorePlugin, Events} from 'clappr'
 import $ from 'jQuery'
 import './style.sass'
 import StandardMarker from "./standard-marker"
-import MarkerHandle from "./marker-handle"
 
 class MarkersPlugin extends UICorePlugin {
   get name() { return 'markers-plugin' }
@@ -42,12 +41,14 @@ class MarkersPlugin extends UICorePlugin {
         $tooltip = $($tooltip)
       }
       return {
+        emitter: a.getEmitter(),
         $marker: $(a.getMarkerEl()),
         markerLeft: null,
         $tooltip: $tooltip,
         $tooltipContainer: null,
         tooltipContainerLeft: null,
         tooltipContainerBottom: null,
+        tooltipChangedHandler: null,
         time: a.getTime()
       }
     })
@@ -79,6 +80,11 @@ class MarkersPlugin extends UICorePlugin {
       marker.$tooltipContainer = $tooltipContainer
       $tooltipContainer.append($tooltip)
       this._$tooltips.append($tooltipContainer)
+      marker.tooltipChangedHandler = () => {
+        // fired from marker if it's tooltip contents changes
+        this._updateTooltipPosition(marker)
+      }
+      marker.emitter.on("tooltipChanged", marker.tooltipChangedHandler)
       this._updateTooltipPosition(marker)
     }
   }
@@ -95,8 +101,9 @@ class MarkersPlugin extends UICorePlugin {
     var width = $tooltipContainer.width()
     var seekBarWidth = this._$tooltips.width()
     var mediaDuration = this.core.mediaControl.container.getDuration()
-    var leftPos = seekBarWidth*(marker.time/mediaDuration)
-    leftPos -= (width/2)
+    var leftPos = (seekBarWidth*(marker.time/mediaDuration)) - (width/2)
+    leftPos = Math.max(0, Math.min(leftPos, seekBarWidth - width))
+
     if (bottomMargin !== marker.tooltipContainerBottom || leftPos !== marker.tooltipContainerLeft) {
       $tooltipContainer.css({
         bottom: bottomMargin+"px",
@@ -142,6 +149,15 @@ class MarkersPlugin extends UICorePlugin {
     $el.append(this._$tooltips)
     this._appendElToMediaControl()
     return this
+  }
+
+  destroy() {
+    // remove any listeners
+    for(let marker of this._markers) {
+      if (marker.tooltipChangedHandler) {
+        marker.emitter.off("tooltipChanged", marker.tooltipChangedHandler)
+      }
+    }
   }
 }
 
