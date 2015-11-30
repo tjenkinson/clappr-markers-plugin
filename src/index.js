@@ -50,7 +50,8 @@ class MarkersPlugin extends UICorePlugin {
         tooltipContainerLeft: null,
         tooltipContainerBottom: null,
         tooltipChangedHandler: null,
-        time: a.getTime()
+        time: a.getTime(),
+        onDestroy: a.onDestroy
       }
     })
     // append the marker elements to the dom
@@ -152,11 +153,12 @@ class MarkersPlugin extends UICorePlugin {
   }
 
   destroy() {
-    // remove any listeners
+    // remove any listeners and call onDestroy()
     for(let marker of this._markers) {
       if (marker.tooltipChangedHandler) {
         marker.emitter.off("tooltipChanged", marker.tooltipChangedHandler)
       }
+      marker.onDestroy()
     }
   }
 }

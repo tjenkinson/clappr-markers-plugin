@@ -54,7 +54,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';Object.defineProperty(exports,'__esModule',{value:true});var _createClass=(function(){function defineProperties(target,props){for(var i=0;i < props.length;i++) {var descriptor=props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if('value' in descriptor)descriptor.writable = true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};})();var _get=function get(_x,_x2,_x3){var _again=true;_function: while(_again) {var object=_x,property=_x2,receiver=_x3;_again = false;if(object === null)object = Function.prototype;var desc=Object.getOwnPropertyDescriptor(object,property);if(desc === undefined){var parent=Object.getPrototypeOf(object);if(parent === null){return undefined;}else {_x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;}}else if('value' in desc){return desc.value;}else {var getter=desc.get;if(getter === undefined){return undefined;}return getter.call(receiver);}}};function _interopRequireDefault(obj){return obj && obj.__esModule?obj:{'default':obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError('Cannot call a class as a function');}}function _inherits(subClass,superClass){if(typeof superClass !== 'function' && superClass !== null){throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);}subClass.prototype = Object.create(superClass && superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__ = superClass;}var _clappr=__webpack_require__(1);var _jQuery=__webpack_require__(2);var _jQuery2=_interopRequireDefault(_jQuery);__webpack_require__(3);var _standardMarker=__webpack_require__(7);var _standardMarker2=_interopRequireDefault(_standardMarker);var MarkersPlugin=(function(_UICorePlugin){_inherits(MarkersPlugin,_UICorePlugin);_createClass(MarkersPlugin,[{key:'name',get:function get(){return 'markers-plugin';}},{key:'attributes',get:function get(){return {'class':this.name};}}]);function MarkersPlugin(core){_classCallCheck(this,MarkersPlugin);_get(Object.getPrototypeOf(MarkersPlugin.prototype),'constructor',this).call(this,core);this._markers = [];this._createInitialMarkers();}_createClass(MarkersPlugin,[{key:'bindEvents',value:function bindEvents(){this.listenTo(this.core.mediaControl.container,_clappr.Events.CONTAINER_TIMEUPDATE,this._onTimeUpdate);this.listenTo(this.core.mediaControl.container,_clappr.Events.CONTAINER_MEDIACONTROL_SHOW,this._onMediaControlShow);}},{key:'_getOptions',value:function _getOptions(){if(!("markersPlugin" in this.core.options)){throw "'markersPlugin' property missing from options object.";}return this.core.options.markersPlugin;}},{key:'_createInitialMarkers',value:function _createInitialMarkers(){var markers=this._getOptions().markers;if(!markers){return;}this._markers = Array.from(markers,function(a){var $tooltip=a.getTooltipEl();if($tooltip){$tooltip = (0,_jQuery2['default'])($tooltip);}return {emitter:a.getEmitter(),$marker:(0,_jQuery2['default'])(a.getMarkerEl()),markerLeft:null,$tooltip:$tooltip,$tooltipContainer:null,tooltipContainerLeft:null,tooltipContainerBottom:null,tooltipChangedHandler:null,time:a.getTime()};}); // append the marker elements to the dom
+	'use strict';Object.defineProperty(exports,'__esModule',{value:true});var _createClass=(function(){function defineProperties(target,props){for(var i=0;i < props.length;i++) {var descriptor=props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if('value' in descriptor)descriptor.writable = true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};})();var _get=function get(_x,_x2,_x3){var _again=true;_function: while(_again) {var object=_x,property=_x2,receiver=_x3;_again = false;if(object === null)object = Function.prototype;var desc=Object.getOwnPropertyDescriptor(object,property);if(desc === undefined){var parent=Object.getPrototypeOf(object);if(parent === null){return undefined;}else {_x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;}}else if('value' in desc){return desc.value;}else {var getter=desc.get;if(getter === undefined){return undefined;}return getter.call(receiver);}}};function _interopRequireDefault(obj){return obj && obj.__esModule?obj:{'default':obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError('Cannot call a class as a function');}}function _inherits(subClass,superClass){if(typeof superClass !== 'function' && superClass !== null){throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);}subClass.prototype = Object.create(superClass && superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__ = superClass;}var _clappr=__webpack_require__(1);var _jQuery=__webpack_require__(2);var _jQuery2=_interopRequireDefault(_jQuery);__webpack_require__(3);var _marker=__webpack_require__(7);var _marker2=_interopRequireDefault(_marker);var _standardMarker=__webpack_require__(23);var _standardMarker2=_interopRequireDefault(_standardMarker);var MarkersPlugin=(function(_UICorePlugin){_inherits(MarkersPlugin,_UICorePlugin);_createClass(MarkersPlugin,[{key:'name',get:function get(){return 'markers-plugin';}},{key:'attributes',get:function get(){return {'class':this.name};}}]);function MarkersPlugin(core){_classCallCheck(this,MarkersPlugin);_get(Object.getPrototypeOf(MarkersPlugin.prototype),'constructor',this).call(this,core);this._markers = [];this._createInitialMarkers();}_createClass(MarkersPlugin,[{key:'bindEvents',value:function bindEvents(){this.listenTo(this.core.mediaControl.container,_clappr.Events.CONTAINER_TIMEUPDATE,this._onTimeUpdate);this.listenTo(this.core.mediaControl.container,_clappr.Events.CONTAINER_MEDIACONTROL_SHOW,this._onMediaControlShow);}},{key:'_getOptions',value:function _getOptions(){if(!("markersPlugin" in this.core.options)){throw "'markersPlugin' property missing from options object.";}return this.core.options.markersPlugin;}},{key:'_createInitialMarkers',value:function _createInitialMarkers(){var markers=this._getOptions().markers;if(!markers){return;}this._markers = Array.from(markers,function(a){var $tooltip=a.getTooltipEl();if($tooltip){$tooltip = (0,_jQuery2['default'])($tooltip);}return {emitter:a.getEmitter(),$marker:(0,_jQuery2['default'])(a.getMarkerEl()),markerLeft:null,$tooltip:$tooltip,$tooltipContainer:null,tooltipContainerLeft:null,tooltipContainerBottom:null,tooltipChangedHandler:null,time:a.getTime(),onDestroy:a.onDestroy};}); // append the marker elements to the dom
 	var _iteratorNormalCompletion=true;var _didIteratorError=false;var _iteratorError=undefined;try{for(var _iterator=this._markers[Symbol.iterator](),_step;!(_iteratorNormalCompletion = (_step = _iterator.next()).done);_iteratorNormalCompletion = true) {var marker=_step.value;this._createMarker(marker);}}catch(err) {_didIteratorError = true;_iteratorError = err;}finally {try{if(!_iteratorNormalCompletion && _iterator['return']){_iterator['return']();}}finally {if(_didIteratorError){throw _iteratorError;}}}this._renderMarkers();}},{key:'_createMarker',value:function _createMarker(marker){var _this=this; // marker
 	var $marker=marker.$marker;var markerTime=marker.time;$marker.click(function(e){ // when marker clicked seek to the exact time represented by the marker
 	// TODO this will change to seek() when clappr updated with actual time
@@ -63,11 +63,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var $tooltipContainer=(0,_jQuery2['default'])("<div />").addClass("tooltip-container");marker.$tooltipContainer = $tooltipContainer;$tooltipContainer.append($tooltip);this._$tooltips.append($tooltipContainer);marker.tooltipChangedHandler = function(){ // fired from marker if it's tooltip contents changes
 	_this._updateTooltipPosition(marker);};marker.emitter.on("tooltipChanged",marker.tooltipChangedHandler);this._updateTooltipPosition(marker);}} // calculates and sets the position of the tooltip
 	},{key:'_updateTooltipPosition',value:function _updateTooltipPosition(marker){var $tooltipContainer=marker.$tooltipContainer;if(!$tooltipContainer){ // no tooltip
-	return;} // TODO extract some measurments out to globals and so an updateCalculations method
-	var bottomMargin=this._getOptions().tooltipBottomMargin || 17;var width=$tooltipContainer.width();var seekBarWidth=this._$tooltips.width();var mediaDuration=this.core.mediaControl.container.getDuration();var leftPos=seekBarWidth * (marker.time / mediaDuration) - width / 2;leftPos = Math.max(0,Math.min(leftPos,seekBarWidth - width));if(bottomMargin !== marker.tooltipContainerBottom || leftPos !== marker.tooltipContainerLeft){$tooltipContainer.css({bottom:bottomMargin + "px",left:leftPos + "px"});marker.tooltipContainerBottom = bottomMargin;marker.tooltipContainerLeft = leftPos;}}},{key:'_onTimeUpdate',value:function _onTimeUpdate(){ // need to render on time update because if duration is increasing
+	return;}var bottomMargin=this._getOptions().tooltipBottomMargin || 17;var width=$tooltipContainer.width();var seekBarWidth=this._$tooltips.width();var mediaDuration=this.core.mediaControl.container.getDuration();var leftPos=seekBarWidth * (marker.time / mediaDuration) - width / 2;leftPos = Math.max(0,Math.min(leftPos,seekBarWidth - width));if(bottomMargin !== marker.tooltipContainerBottom || leftPos !== marker.tooltipContainerLeft){$tooltipContainer.css({bottom:bottomMargin + "px",left:leftPos + "px"});marker.tooltipContainerBottom = bottomMargin;marker.tooltipContainerLeft = leftPos;}}},{key:'_onTimeUpdate',value:function _onTimeUpdate(){ // need to render on time update because if duration is increasing
 	// markers will need to be repositioned
-	this._renderMarkers();}},{key:'_onMediaControlShow',value:function _onMediaControlShow(){this._renderMarkers();}},{key:'_renderMarkers',value:function _renderMarkers(){var mediaDuration=this.core.mediaControl.container.getDuration();var _iteratorNormalCompletion2=true;var _didIteratorError2=false;var _iteratorError2=undefined;try{for(var _iterator2=this._markers[Symbol.iterator](),_step2;!(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done);_iteratorNormalCompletion2 = true) {var marker=_step2.value;var $el=marker.$marker;var percentage=Math.min(Math.max(marker.time / mediaDuration * 100,0),100);if(marker.markerLeft !== percentage){$el.css("left",percentage + "%");marker.markerLeft = percentage;}this._updateTooltipPosition(marker);}}catch(err) {_didIteratorError2 = true;_iteratorError2 = err;}finally {try{if(!_iteratorNormalCompletion2 && _iterator2['return']){_iterator2['return']();}}finally {if(_didIteratorError2){throw _iteratorError2;}}}}},{key:'_appendElToMediaControl',value:function _appendElToMediaControl(){this.core.mediaControl.$el.find(".bar-container").first().append(this.el);}},{key:'render',value:function render(){this._$markers = (0,_jQuery2['default'])("<div />").addClass("markers-plugin-markers");this._$tooltips = (0,_jQuery2['default'])("<div />").addClass("markers-plugin-tooltips");var $el=(0,_jQuery2['default'])(this.el);$el.append(this._$markers);$el.append(this._$tooltips);this._appendElToMediaControl();return this;}},{key:'destroy',value:function destroy(){ // remove any listeners
-	var _iteratorNormalCompletion3=true;var _didIteratorError3=false;var _iteratorError3=undefined;try{for(var _iterator3=this._markers[Symbol.iterator](),_step3;!(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done);_iteratorNormalCompletion3 = true) {var marker=_step3.value;if(marker.tooltipChangedHandler){marker.emitter.off("tooltipChanged",marker.tooltipChangedHandler);}}}catch(err) {_didIteratorError3 = true;_iteratorError3 = err;}finally {try{if(!_iteratorNormalCompletion3 && _iterator3['return']){_iterator3['return']();}}finally {if(_didIteratorError3){throw _iteratorError3;}}}}}]);return MarkersPlugin;})(_clappr.UICorePlugin);exports['default'] = MarkersPlugin;exports.StandardMarker = _standardMarker2['default'];
+	this._renderMarkers();}},{key:'_onMediaControlShow',value:function _onMediaControlShow(){this._renderMarkers();}},{key:'_renderMarkers',value:function _renderMarkers(){var mediaDuration=this.core.mediaControl.container.getDuration();var _iteratorNormalCompletion2=true;var _didIteratorError2=false;var _iteratorError2=undefined;try{for(var _iterator2=this._markers[Symbol.iterator](),_step2;!(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done);_iteratorNormalCompletion2 = true) {var marker=_step2.value;var $el=marker.$marker;var percentage=Math.min(Math.max(marker.time / mediaDuration * 100,0),100);if(marker.markerLeft !== percentage){$el.css("left",percentage + "%");marker.markerLeft = percentage;}this._updateTooltipPosition(marker);}}catch(err) {_didIteratorError2 = true;_iteratorError2 = err;}finally {try{if(!_iteratorNormalCompletion2 && _iterator2['return']){_iterator2['return']();}}finally {if(_didIteratorError2){throw _iteratorError2;}}}}},{key:'_appendElToMediaControl',value:function _appendElToMediaControl(){this.core.mediaControl.$el.find(".bar-container").first().append(this.el);}},{key:'render',value:function render(){this._$markers = (0,_jQuery2['default'])("<div />").addClass("markers-plugin-markers");this._$tooltips = (0,_jQuery2['default'])("<div />").addClass("markers-plugin-tooltips");var $el=(0,_jQuery2['default'])(this.el);$el.append(this._$markers);$el.append(this._$tooltips);this._appendElToMediaControl();return this;}},{key:'destroy',value:function destroy(){ // remove any listeners and call onDestroy()
+	var _iteratorNormalCompletion3=true;var _didIteratorError3=false;var _iteratorError3=undefined;try{for(var _iterator3=this._markers[Symbol.iterator](),_step3;!(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done);_iteratorNormalCompletion3 = true) {var marker=_step3.value;if(marker.tooltipChangedHandler){marker.emitter.off("tooltipChanged",marker.tooltipChangedHandler);}marker.onDestroy();}}catch(err) {_didIteratorError3 = true;_iteratorError3 = err;}finally {try{if(!_iteratorNormalCompletion3 && _iterator3['return']){_iterator3['return']();}}finally {if(_didIteratorError3){throw _iteratorError3;}}}}}]);return MarkersPlugin;})(_clappr.UICorePlugin);exports['default'] = MarkersPlugin;exports.Marker = _marker2['default'];exports.StandardMarker = _standardMarker2['default'];
 
 /***/ },
 /* 1 */
@@ -1819,29 +1818,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';Object.defineProperty(exports,'__esModule',{value:true});var _createClass=(function(){function defineProperties(target,props){for(var i=0;i < props.length;i++) {var descriptor=props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if('value' in descriptor)descriptor.writable = true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};})();var _get=function get(_x,_x2,_x3){var _again=true;_function: while(_again) {var object=_x,property=_x2,receiver=_x3;_again = false;if(object === null)object = Function.prototype;var desc=Object.getOwnPropertyDescriptor(object,property);if(desc === undefined){var parent=Object.getPrototypeOf(object);if(parent === null){return undefined;}else {_x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;}}else if('value' in desc){return desc.value;}else {var getter=desc.get;if(getter === undefined){return undefined;}return getter.call(receiver);}}};function _interopRequireDefault(obj){return obj && obj.__esModule?obj:{'default':obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError('Cannot call a class as a function');}}function _inherits(subClass,superClass){if(typeof superClass !== 'function' && superClass !== null){throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);}subClass.prototype = Object.create(superClass && superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__ = superClass;}var _jQuery=__webpack_require__(2);var _jQuery2=_interopRequireDefault(_jQuery);var _marker=__webpack_require__(8);var _marker2=_interopRequireDefault(_marker); /*
-	 * An implementation of a basic Marker, which can have a tooltip containing text.
-	 */var StandardMarker=(function(_Marker){_inherits(StandardMarker,_Marker); /*
-	   * time: the time in seconds that this marker represents
-	   * tooltipText: the text to be shown on the tooltip (optional)
-	   */function StandardMarker(time,tooltipText){_classCallCheck(this,StandardMarker);_get(Object.getPrototypeOf(StandardMarker.prototype),'constructor',this).call(this);this._time = time;this._tooltipText = tooltipText || null;this._$marker = this._buildMarkerEl();this._$tooltip = this._buildTooltipEl();this._addListeners();} /*
-	   * Should return the time (in seconds) that this marker represents.
-	   */_createClass(StandardMarker,[{key:'getTime',value:function getTime(){return this._time;} /*
-	   * Should return the dom element which should represent the marker.
-	   * It will be inserted onto the seek bar and kept at the correct location.
-	   */},{key:'getMarkerEl',value:function getMarkerEl(){return this._$marker;} /*
-	   * Should return the dom element which is the tool tip,
-	   * or null if there is o tool tip for this marker.
-	   *
-	   * The tooltip will placed above the marker element, inside a container,
-	   * and this containers position will be managed for you.
-	   */},{key:'getTooltipEl',value:function getTooltipEl(){return this._$tooltip;}},{key:'_buildMarkerEl',value:function _buildMarkerEl(){var $marker=(0,_jQuery2['default'])("<div />").addClass("standard-marker");$marker.append((0,_jQuery2['default'])("<div />").addClass("standard-marker-inner"));return $marker;}},{key:'_buildTooltipEl',value:function _buildTooltipEl(){if(!this._tooltipText){return null;}return (0,_jQuery2['default'])("<div />").addClass("standard-tooltip").text(this._tooltipText);}},{key:'_addListeners',value:function _addListeners(){var _this=this;if(!this._$tooltip){return;}this._$marker.hover(function(){_this._$tooltip.attr("data-show","1");_this.notifyTooltipChanged();},function(){_this._$tooltip.attr("data-show","0");});}}]);return StandardMarker;})(_marker2['default']);exports['default'] = StandardMarker;module.exports = exports['default'];
-
-/***/ },
-/* 8 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";Object.defineProperty(exports,"__esModule",{value:true});var _createClass=(function(){function defineProperties(target,props){for(var i=0;i < props.length;i++) {var descriptor=props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if("value" in descriptor)descriptor.writable = true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};})();function _interopRequireDefault(obj){return obj && obj.__esModule?obj:{"default":obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}var _eventEmitter=__webpack_require__(9);var _eventEmitter2=_interopRequireDefault(_eventEmitter); /*
+	"use strict";Object.defineProperty(exports,"__esModule",{value:true});var _createClass=(function(){function defineProperties(target,props){for(var i=0;i < props.length;i++) {var descriptor=props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if("value" in descriptor)descriptor.writable = true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};})();function _interopRequireDefault(obj){return obj && obj.__esModule?obj:{"default":obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}var _eventEmitter=__webpack_require__(8);var _eventEmitter2=_interopRequireDefault(_eventEmitter); /*
 	 * This represents and Marker and should be extended.
 	 */var Marker=(function(){function Marker(){_classCallCheck(this,Marker);this._emitter = new _eventEmitter2["default"]({});} /*
 	   * Get the event emitter.
@@ -1864,95 +1841,120 @@ return /******/ (function(modules) { // webpackBootstrap
 	   */},{key:"getTooltipEl",value:function getTooltipEl(){throw "Not implemented!";}}]);return Marker;})();exports["default"] = Marker;module.exports = exports["default"];
 
 /***/ },
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';var d=__webpack_require__(9),callable=__webpack_require__(22),apply=Function.prototype.apply,call=Function.prototype.call,create=Object.create,defineProperty=Object.defineProperty,defineProperties=Object.defineProperties,hasOwnProperty=Object.prototype.hasOwnProperty,descriptor={configurable:true,enumerable:false,writable:true},on,once,off,emit,methods,descriptors,base;on = function(type,listener){var data;callable(listener);if(!hasOwnProperty.call(this,'__ee__')){data = descriptor.value = create(null);defineProperty(this,'__ee__',descriptor);descriptor.value = null;}else {data = this.__ee__;}if(!data[type])data[type] = listener;else if(typeof data[type] === 'object')data[type].push(listener);else data[type] = [data[type],listener];return this;};once = function(type,listener){var once,self;callable(listener);self = this;on.call(this,type,once = function(){off.call(self,type,once);apply.call(listener,this,arguments);});once.__eeOnceListener__ = listener;return this;};off = function(type,listener){var data,listeners,candidate,i;callable(listener);if(!hasOwnProperty.call(this,'__ee__'))return this;data = this.__ee__;if(!data[type])return this;listeners = data[type];if(typeof listeners === 'object'){for(i = 0;candidate = listeners[i];++i) {if(candidate === listener || candidate.__eeOnceListener__ === listener){if(listeners.length === 2)data[type] = listeners[i?0:1];else listeners.splice(i,1);}}}else {if(listeners === listener || listeners.__eeOnceListener__ === listener){delete data[type];}}return this;};emit = function(type){var i,l,listener,listeners,args;if(!hasOwnProperty.call(this,'__ee__'))return;listeners = this.__ee__[type];if(!listeners)return;if(typeof listeners === 'object'){l = arguments.length;args = new Array(l - 1);for(i = 1;i < l;++i) args[i - 1] = arguments[i];listeners = listeners.slice();for(i = 0;listener = listeners[i];++i) {apply.call(listener,this,args);}}else {switch(arguments.length){case 1:call.call(listeners,this);break;case 2:call.call(listeners,this,arguments[1]);break;case 3:call.call(listeners,this,arguments[1],arguments[2]);break;default:l = arguments.length;args = new Array(l - 1);for(i = 1;i < l;++i) {args[i - 1] = arguments[i];}apply.call(listeners,this,args);}}};methods = {on:on,once:once,off:off,emit:emit};descriptors = {on:d(on),once:d(once),off:d(off),emit:d(emit)};base = defineProperties({},descriptors);module.exports = exports = function(o){return o == null?create(base):defineProperties(Object(o),descriptors);};exports.methods = methods;
+
+/***/ },
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';var d=__webpack_require__(10),callable=__webpack_require__(23),apply=Function.prototype.apply,call=Function.prototype.call,create=Object.create,defineProperty=Object.defineProperty,defineProperties=Object.defineProperties,hasOwnProperty=Object.prototype.hasOwnProperty,descriptor={configurable:true,enumerable:false,writable:true},on,once,off,emit,methods,descriptors,base;on = function(type,listener){var data;callable(listener);if(!hasOwnProperty.call(this,'__ee__')){data = descriptor.value = create(null);defineProperty(this,'__ee__',descriptor);descriptor.value = null;}else {data = this.__ee__;}if(!data[type])data[type] = listener;else if(typeof data[type] === 'object')data[type].push(listener);else data[type] = [data[type],listener];return this;};once = function(type,listener){var once,self;callable(listener);self = this;on.call(this,type,once = function(){off.call(self,type,once);apply.call(listener,this,arguments);});once.__eeOnceListener__ = listener;return this;};off = function(type,listener){var data,listeners,candidate,i;callable(listener);if(!hasOwnProperty.call(this,'__ee__'))return this;data = this.__ee__;if(!data[type])return this;listeners = data[type];if(typeof listeners === 'object'){for(i = 0;candidate = listeners[i];++i) {if(candidate === listener || candidate.__eeOnceListener__ === listener){if(listeners.length === 2)data[type] = listeners[i?0:1];else listeners.splice(i,1);}}}else {if(listeners === listener || listeners.__eeOnceListener__ === listener){delete data[type];}}return this;};emit = function(type){var i,l,listener,listeners,args;if(!hasOwnProperty.call(this,'__ee__'))return;listeners = this.__ee__[type];if(!listeners)return;if(typeof listeners === 'object'){l = arguments.length;args = new Array(l - 1);for(i = 1;i < l;++i) args[i - 1] = arguments[i];listeners = listeners.slice();for(i = 0;listener = listeners[i];++i) {apply.call(listener,this,args);}}else {switch(arguments.length){case 1:call.call(listeners,this);break;case 2:call.call(listeners,this,arguments[1]);break;case 3:call.call(listeners,this,arguments[1],arguments[2]);break;default:l = arguments.length;args = new Array(l - 1);for(i = 1;i < l;++i) {args[i - 1] = arguments[i];}apply.call(listeners,this,args);}}};methods = {on:on,once:once,off:off,emit:emit};descriptors = {on:d(on),once:d(once),off:d(off),emit:d(emit)};base = defineProperties({},descriptors);module.exports = exports = function(o){return o == null?create(base):defineProperties(Object(o),descriptors);};exports.methods = methods;
+	'use strict';var assign=__webpack_require__(10),normalizeOpts=__webpack_require__(17),isCallable=__webpack_require__(18),contains=__webpack_require__(19),d;d = module.exports = function(dscr,value /*, options*/){var c,e,w,options,desc;if(arguments.length < 2 || typeof dscr !== 'string'){options = value;value = dscr;dscr = null;}else {options = arguments[2];}if(dscr == null){c = w = true;e = false;}else {c = contains.call(dscr,'c');e = contains.call(dscr,'e');w = contains.call(dscr,'w');}desc = {value:value,configurable:c,enumerable:e,writable:w};return !options?desc:assign(normalizeOpts(options),desc);};d.gs = function(dscr,get,set /*, options*/){var c,e,options,desc;if(typeof dscr !== 'string'){options = set;set = get;get = dscr;dscr = null;}else {options = arguments[3];}if(get == null){get = undefined;}else if(!isCallable(get)){options = get;get = set = undefined;}else if(set == null){set = undefined;}else if(!isCallable(set)){options = set;set = undefined;}if(dscr == null){c = true;e = false;}else {c = contains.call(dscr,'c');e = contains.call(dscr,'e');}desc = {get:get,set:set,configurable:c,enumerable:e};return !options?desc:assign(normalizeOpts(options),desc);};
 
 /***/ },
 /* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';var assign=__webpack_require__(11),normalizeOpts=__webpack_require__(18),isCallable=__webpack_require__(19),contains=__webpack_require__(20),d;d = module.exports = function(dscr,value /*, options*/){var c,e,w,options,desc;if(arguments.length < 2 || typeof dscr !== 'string'){options = value;value = dscr;dscr = null;}else {options = arguments[2];}if(dscr == null){c = w = true;e = false;}else {c = contains.call(dscr,'c');e = contains.call(dscr,'e');w = contains.call(dscr,'w');}desc = {value:value,configurable:c,enumerable:e,writable:w};return !options?desc:assign(normalizeOpts(options),desc);};d.gs = function(dscr,get,set /*, options*/){var c,e,options,desc;if(typeof dscr !== 'string'){options = set;set = get;get = dscr;dscr = null;}else {options = arguments[3];}if(get == null){get = undefined;}else if(!isCallable(get)){options = get;get = set = undefined;}else if(set == null){set = undefined;}else if(!isCallable(set)){options = set;set = undefined;}if(dscr == null){c = true;e = false;}else {c = contains.call(dscr,'c');e = contains.call(dscr,'e');}desc = {get:get,set:set,configurable:c,enumerable:e};return !options?desc:assign(normalizeOpts(options),desc);};
+	'use strict';module.exports = __webpack_require__(11)()?Object.assign:__webpack_require__(12);
 
 /***/ },
 /* 11 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';module.exports = __webpack_require__(12)()?Object.assign:__webpack_require__(13);
-
-/***/ },
-/* 12 */
 /***/ function(module, exports) {
 
 	'use strict';module.exports = function(){var assign=Object.assign,obj;if(typeof assign !== 'function')return false;obj = {foo:'raz'};assign(obj,{bar:'dwa'},{trzy:'trzy'});return obj.foo + obj.bar + obj.trzy === 'razdwatrzy';};
 
 /***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';var keys=__webpack_require__(13),value=__webpack_require__(16),max=Math.max;module.exports = function(dest,src /*, …srcn*/){var error,i,l=max(arguments.length,2),assign;dest = Object(value(dest));assign = function(key){try{dest[key] = src[key];}catch(e) {if(!error)error = e;}};for(i = 1;i < l;++i) {src = arguments[i];keys(src).forEach(assign);}if(error !== undefined)throw error;return dest;};
+
+/***/ },
 /* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';var keys=__webpack_require__(14),value=__webpack_require__(17),max=Math.max;module.exports = function(dest,src /*, …srcn*/){var error,i,l=max(arguments.length,2),assign;dest = Object(value(dest));assign = function(key){try{dest[key] = src[key];}catch(e) {if(!error)error = e;}};for(i = 1;i < l;++i) {src = arguments[i];keys(src).forEach(assign);}if(error !== undefined)throw error;return dest;};
+	'use strict';module.exports = __webpack_require__(14)()?Object.keys:__webpack_require__(15);
 
 /***/ },
 /* 14 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';module.exports = __webpack_require__(15)()?Object.keys:__webpack_require__(16);
-
-/***/ },
-/* 15 */
 /***/ function(module, exports) {
 
 	'use strict';module.exports = function(){try{Object.keys('primitive');return true;}catch(e) {return false;}};
 
 /***/ },
-/* 16 */
+/* 15 */
 /***/ function(module, exports) {
 
 	'use strict';var keys=Object.keys;module.exports = function(object){return keys(object == null?object:Object(object));};
 
 /***/ },
-/* 17 */
+/* 16 */
 /***/ function(module, exports) {
 
 	'use strict';module.exports = function(value){if(value == null)throw new TypeError("Cannot use null or undefined");return value;};
 
 /***/ },
-/* 18 */
+/* 17 */
 /***/ function(module, exports) {
 
 	'use strict';var forEach=Array.prototype.forEach,create=Object.create;var process=function process(src,obj){var key;for(key in src) obj[key] = src[key];};module.exports = function(options /*, …options*/){var result=create(null);forEach.call(arguments,function(options){if(options == null)return;process(Object(options),result);});return result;};
 
 /***/ },
-/* 19 */
+/* 18 */
 /***/ function(module, exports) {
 
 	// Deprecated
 	'use strict';module.exports = function(obj){return typeof obj === 'function';};
 
 /***/ },
-/* 20 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';module.exports = __webpack_require__(21)()?String.prototype.contains:__webpack_require__(22);
+	'use strict';module.exports = __webpack_require__(20)()?String.prototype.contains:__webpack_require__(21);
 
 /***/ },
-/* 21 */
+/* 20 */
 /***/ function(module, exports) {
 
 	'use strict';var str='razdwatrzy';module.exports = function(){if(typeof str.contains !== 'function')return false;return str.contains('dwa') === true && str.contains('foo') === false;};
 
 /***/ },
-/* 22 */
+/* 21 */
 /***/ function(module, exports) {
 
 	'use strict';var indexOf=String.prototype.indexOf;module.exports = function(searchString /*, position*/){return indexOf.call(this,searchString,arguments[1]) > -1;};
 
 /***/ },
-/* 23 */
+/* 22 */
 /***/ function(module, exports) {
 
 	'use strict';module.exports = function(fn){if(typeof fn !== 'function')throw new TypeError(fn + " is not a function");return fn;};
+
+/***/ },
+/* 23 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';Object.defineProperty(exports,'__esModule',{value:true});var _createClass=(function(){function defineProperties(target,props){for(var i=0;i < props.length;i++) {var descriptor=props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if('value' in descriptor)descriptor.writable = true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};})();var _get=function get(_x,_x2,_x3){var _again=true;_function: while(_again) {var object=_x,property=_x2,receiver=_x3;_again = false;if(object === null)object = Function.prototype;var desc=Object.getOwnPropertyDescriptor(object,property);if(desc === undefined){var parent=Object.getPrototypeOf(object);if(parent === null){return undefined;}else {_x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;}}else if('value' in desc){return desc.value;}else {var getter=desc.get;if(getter === undefined){return undefined;}return getter.call(receiver);}}};function _interopRequireDefault(obj){return obj && obj.__esModule?obj:{'default':obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError('Cannot call a class as a function');}}function _inherits(subClass,superClass){if(typeof superClass !== 'function' && superClass !== null){throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);}subClass.prototype = Object.create(superClass && superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__ = superClass;}var _jQuery=__webpack_require__(2);var _jQuery2=_interopRequireDefault(_jQuery);var _marker=__webpack_require__(7);var _marker2=_interopRequireDefault(_marker); /*
+	 * An implementation of a basic Marker, which can have a tooltip containing text.
+	 */var StandardMarker=(function(_Marker){_inherits(StandardMarker,_Marker); /*
+	   * time: the time in seconds that this marker represents
+	   * tooltipText: the text to be shown on the tooltip (optional)
+	   */function StandardMarker(time,tooltipText){_classCallCheck(this,StandardMarker);_get(Object.getPrototypeOf(StandardMarker.prototype),'constructor',this).call(this);this._time = time;this._tooltipText = tooltipText || null;this._$marker = this._buildMarkerEl();this._$tooltip = this._buildTooltipEl();this._addListeners();} /*
+	   * Should return the time (in seconds) that this marker represents.
+	   */_createClass(StandardMarker,[{key:'getTime',value:function getTime(){return this._time;} /*
+	   * Should return the dom element which should represent the marker.
+	   * It will be inserted onto the seek bar and kept at the correct location.
+	   */},{key:'getMarkerEl',value:function getMarkerEl(){return this._$marker;} /*
+	   * Should return the dom element which is the tool tip,
+	   * or null if there is o tool tip for this marker.
+	   *
+	   * The tooltip will placed above the marker element, inside a container,
+	   * and this containers position will be managed for you.
+	   */},{key:'getTooltipEl',value:function getTooltipEl(){return this._$tooltip;} /*
+	   * Called when the plugin is destroyed.
+	   */},{key:'onDestroy',value:function onDestroy(){ // default to doing nothing
+	}},{key:'_buildMarkerEl',value:function _buildMarkerEl(){var $marker=(0,_jQuery2['default'])("<div />").addClass("standard-marker");$marker.append((0,_jQuery2['default'])("<div />").addClass("standard-marker-inner"));return $marker;}},{key:'_buildTooltipEl',value:function _buildTooltipEl(){if(!this._tooltipText){return null;}return (0,_jQuery2['default'])("<div />").addClass("standard-tooltip").text(this._tooltipText);}},{key:'_addListeners',value:function _addListeners(){var _this=this;if(!this._$tooltip){return;}this._$marker.hover(function(){_this._$tooltip.attr("data-show","1");_this.notifyTooltipChanged();},function(){_this._$tooltip.attr("data-show","0");});}}]);return StandardMarker;})(_marker2['default']);exports['default'] = StandardMarker;module.exports = exports['default'];
 
 /***/ }
 /******/ ])

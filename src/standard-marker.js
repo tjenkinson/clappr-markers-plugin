@@ -46,6 +46,13 @@ export default class StandardMarker extends Marker {
     return this._$tooltip
   }
 
+  /*
+   * Called when the plugin is destroyed.
+   */
+  onDestroy() {
+    // default to doing nothing
+  }
+
   _buildMarkerEl() {
     var $marker = $("<div />").addClass("standard-marker")
     $marker.append($("<div />").addClass("standard-marker-inner"))
@@ -71,4 +78,5 @@ export default class StandardMarker extends Marker {
       this._$tooltip.attr("data-show", "0")
     })
   }
+
 }
