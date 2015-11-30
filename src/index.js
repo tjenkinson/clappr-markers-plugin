@@ -1,6 +1,7 @@
 import {UICorePlugin, Events} from 'clappr'
 import $ from 'jQuery'
 import './style.sass'
+import Marker from "./marker"
 import StandardMarker from "./standard-marker"
 
 class MarkersPlugin extends UICorePlugin {
@@ -96,7 +97,6 @@ class MarkersPlugin extends UICorePlugin {
       // no tooltip
       return
     }
-    // TODO extract some measurments out to globals and so an updateCalculations method
     var bottomMargin = this._getOptions().tooltipBottomMargin || 17
     var width = $tooltipContainer.width()
     var seekBarWidth = this._$tooltips.width()
@@ -162,4 +162,5 @@ class MarkersPlugin extends UICorePlugin {
 }
 
 export default MarkersPlugin
+export {Marker as Marker}
 export {StandardMarker as StandardMarker}
