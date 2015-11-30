@@ -51,4 +51,11 @@ export default class Marker {
   getTooltipEl() {
     throw "Not implemented!"
   }
+
+  /*
+   * Called when the plugin is destroyed.
+   */
+  onDestroy() {
+    // default to doing nothing
+  }
 }
