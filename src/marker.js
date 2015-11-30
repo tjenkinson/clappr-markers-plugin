@@ -43,7 +43,7 @@ export default class Marker {
 
   /*
    * Should return the dom element which is the tool tip,
-   * or null if there is o tool tip for this marker.
+   * or null if there is no tool tip for this marker.
    *
    * The tooltip will placed above the marker element, inside a container,
    * and this containers position will be managed for you.
