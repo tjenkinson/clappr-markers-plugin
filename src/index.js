@@ -67,8 +67,7 @@ class MarkersPlugin extends UICorePlugin {
     var markerTime = marker.time
     $marker.click((e) => {
       // when marker clicked seek to the exact time represented by the marker
-      // TODO this will change to seek() when clappr updated with actual time
-      this.core.mediaControl.container.setCurrentTime(markerTime/this.core.mediaControl.container.getDuration()*100)
+      this.core.mediaControl.container.seek(markerTime)
       e.preventDefault()
       e.stopImmediatePropagation()
     })
