@@ -22,6 +22,7 @@ class MarkersPlugin extends UICorePlugin {
   bindEvents() {
     this.listenTo(this.core.mediaControl.container, Events.CONTAINER_TIMEUPDATE, this._onTimeUpdate)
     this.listenTo(this.core.mediaControl.container, Events.CONTAINER_MEDIACONTROL_SHOW, this._onMediaControlShow)
+    this.listenTo(this.core.mediaControl, Events.MEDIACONTROL_RENDERED, this._onMediaControlRendered)
   }
 
   _getOptions() {
@@ -112,6 +113,10 @@ class MarkersPlugin extends UICorePlugin {
       marker.tooltipContainerBottom = bottomMargin
       marker.tooltipContainerLeft = leftPos
     }
+  }
+
+  _onMediaControlRendered() {
+    this._appendElToMediaControl()
   }
 
   _onTimeUpdate() {
