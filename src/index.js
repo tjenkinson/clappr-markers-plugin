@@ -1,3 +1,4 @@
+import 'babel-core/polyfill'
 import {UICorePlugin, Events} from 'clappr'
 import $ from 'jQuery'
 import './style.sass'
@@ -46,12 +47,13 @@ class MarkersPlugin extends UICorePlugin {
     if (!markers) {
       return
     }
-    this._markers = Array.from(markers, (a) => {
+    this._markers = []
+    for(let a of markers) {
       var $tooltip = a.getTooltipEl()
       if ($tooltip) {
         $tooltip = $($tooltip)
       }
-      return {
+      this._markers.push({
         emitter: a.getEmitter(),
         $marker: $(a.getMarkerEl()),
         markerLeft: null,
@@ -62,8 +64,9 @@ class MarkersPlugin extends UICorePlugin {
         tooltipChangedHandler: null,
         time: a.getTime(),
         onDestroy: a.onDestroy
-      }
-    })
+      })
+    }
+    
     // append the marker elements to the dom
     for(let marker of this._markers) {
       this._createMarker(marker)
@@ -102,6 +105,10 @@ class MarkersPlugin extends UICorePlugin {
 
   // calculates and sets the position of the tooltip
   _updateTooltipPosition(marker) {
+    if (!this._mediaControlContainerLoaded) {
+      // renderMarkers() will be called when it has, which will call this
+      return
+    }
     var $tooltipContainer = marker.$tooltipContainer
     if (!$tooltipContainer) {
       // no tooltip
@@ -130,6 +137,8 @@ class MarkersPlugin extends UICorePlugin {
 
   _onMediaControlContainerChanged() {
     this._bindContainerEvents()
+    this._mediaControlContainerLoaded = true
+    this._renderMarkers()
   }
 
   _onTimeUpdate() {
@@ -143,6 +152,10 @@ class MarkersPlugin extends UICorePlugin {
   }
 
   _renderMarkers() {
+    if (!this._mediaControlContainerLoaded) {
+      // this will be called again once it has
+      return
+    }
     var mediaDuration = this.core.mediaControl.container.getDuration()
     for(let marker of this._markers) {
       let $el = marker.$marker
