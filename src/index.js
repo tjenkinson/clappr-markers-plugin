@@ -42,6 +42,26 @@ class MarkersPlugin extends UICorePlugin {
     return this.core.options.markersPlugin
   }
 
+  // build a marker object for internal use from the provided Marker
+  _buildInternalMarker(marker) {
+    var $tooltip = marker.getTooltipEl()
+    if ($tooltip) {
+      $tooltip = $($tooltip)
+    }
+    return {
+      emitter: marker.getEmitter(),
+      $marker: $(marker.getMarkerEl()),
+      markerLeft: null,
+      $tooltip: $tooltip,
+      $tooltipContainer: null,
+      tooltipContainerLeft: null,
+      tooltipContainerBottom: null,
+      tooltipChangedHandler: null,
+      time: marker.getTime(),
+      onDestroy: marker.onDestroy
+    }
+  }
+
   _createInitialMarkers() {
     var markers = this._getOptions().markers
     if (!markers) {
@@ -49,32 +69,17 @@ class MarkersPlugin extends UICorePlugin {
     }
     this._markers = []
     for(let a of markers) {
-      var $tooltip = a.getTooltipEl()
-      if ($tooltip) {
-        $tooltip = $($tooltip)
-      }
-      this._markers.push({
-        emitter: a.getEmitter(),
-        $marker: $(a.getMarkerEl()),
-        markerLeft: null,
-        $tooltip: $tooltip,
-        $tooltipContainer: null,
-        tooltipContainerLeft: null,
-        tooltipContainerBottom: null,
-        tooltipChangedHandler: null,
-        time: a.getTime(),
-        onDestroy: a.onDestroy
-      })
+      this._markers.push(this._buildInternalMarker(a))
     }
     
     // append the marker elements to the dom
     for(let marker of this._markers) {
-      this._createMarker(marker)
+      this._createMarkerEl(marker)
     }
     this._renderMarkers()
   }
 
-  _createMarker(marker) {
+  _createMarkerEl(marker) {
     // marker
     var $marker = marker.$marker
     var markerTime = marker.time
