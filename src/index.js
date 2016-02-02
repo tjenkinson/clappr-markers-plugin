@@ -25,6 +25,23 @@ class MarkersPlugin extends UICorePlugin {
     this.listenTo(this.core.mediaControl, Events.MEDIACONTROL_CONTAINERCHANGED, this._onMediaControlContainerChanged)
   }
 
+  /*
+   * Add a new marker.
+   */
+  addMarker(marker) {
+    var internalMarker = this._buildInternalMarker(marker)
+    this._markers.push(internalMarker)
+    this._createMarkerEl(internalMarker)
+    this._renderMarkers()
+  }
+
+  /*
+   * Remove a marker which has previously been added.
+  */
+  removeMarker(marker) {
+    // TODO
+  }
+
   _bindContainerEvents() {
     if (this._oldContainer) {
       this.stopListening(this._oldContainer, Events.CONTAINER_TIMEUPDATE, this._onTimeUpdate)
