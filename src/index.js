@@ -1,6 +1,6 @@
 import 'babel-core/polyfill'
 import {UICorePlugin, Events} from 'clappr'
-import $ from 'jQuery'
+import $ from 'jquery'
 import './style.sass'
 import Marker from "./marker"
 import StandardMarker from "./standard-marker"
