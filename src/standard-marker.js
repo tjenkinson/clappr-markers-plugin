@@ -1,4 +1,4 @@
-import $ from 'jQuery'
+import $ from 'jquery'
 import Marker from './marker'
 
 /*
