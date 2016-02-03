@@ -37,9 +37,31 @@ class MarkersPlugin extends UICorePlugin {
 
   /*
    * Remove a marker which has previously been added.
-  */
+   * Returns true if the marker was removed, false if it didn't exist.
+   */
   removeMarker(marker) {
-    // TODO
+    var internalMarker = null
+    var index = 0
+    this._markers.some((a) => {
+      if (a.source === marker) {
+        internalMarker = a
+        return true
+      }
+      index++
+      return false
+    })
+    if (!internalMarker) {
+      return false
+    }
+    internalMarker.$marker.remove()
+    if (internalMarker.$tooltipContainer) {
+      internalMarker.$tooltipContainer.remove()
+    }
+    if (internalMarker.tooltipChangedHandler) {
+      internalMarker.emitter.off("tooltipChanged", internalMarker.tooltipChangedHandler)
+    }
+    internalMarker.onDestroy()
+    return true
   }
 
   _bindContainerEvents() {
@@ -66,6 +88,7 @@ class MarkersPlugin extends UICorePlugin {
       $tooltip = $($tooltip)
     }
     return {
+      source: marker,
       emitter: marker.getEmitter(),
       $marker: $(marker.getMarkerEl()),
       markerLeft: null,

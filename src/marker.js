@@ -53,7 +53,7 @@ export default class Marker {
   }
 
   /*
-   * Called when the plugin is destroyed.
+   * Called when the marker is removed.
    */
   onDestroy() {
     // default to doing nothing
