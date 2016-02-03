@@ -54,6 +54,7 @@ class MarkersPlugin extends UICorePlugin {
       return false
     }
     internalMarker.$marker.remove()
+    internalMarker.emitter.off("timeChanged", internalMarker.timeChangedHandler)
     if (internalMarker.$tooltipContainer) {
       internalMarker.$tooltipContainer.remove()
     }
@@ -98,6 +99,7 @@ class MarkersPlugin extends UICorePlugin {
       tooltipContainerBottom: null,
       tooltipChangedHandler: null,
       time: marker.getTime(),
+      timeChangedHandler: null,
       onDestroy: marker.onDestroy
     }
   }
@@ -123,6 +125,11 @@ class MarkersPlugin extends UICorePlugin {
     // marker
     var $marker = marker.$marker
     var markerTime = marker.time
+    marker.timeChangedHandler = () => {
+      // fired from marker if it's time changes
+      this._updateMarkerTime(marker)
+    }
+    marker.emitter.on("timeChanged", marker.timeChangedHandler)
     $marker.click((e) => {
       // when marker clicked seek to the exact time represented by the marker
       this.core.mediaControl.container.seek(markerTime)
@@ -146,6 +153,11 @@ class MarkersPlugin extends UICorePlugin {
       marker.emitter.on("tooltipChanged", marker.tooltipChangedHandler)
       this._updateTooltipPosition(marker)
     }
+  }
+
+  _updateMarkerTime(marker) {
+    marker.time = marker.source.getTime()
+    this._renderMarkers()
   }
 
   // calculates and sets the position of the tooltip
@@ -231,6 +243,7 @@ class MarkersPlugin extends UICorePlugin {
     // remove any listeners and call onDestroy()
     for(let marker of this._markers) {
       if (marker.tooltipChangedHandler) {
+        marker.emitter.off("timeChanged", marker.timeChangedHandler)
         marker.emitter.off("tooltipChanged", marker.tooltipChangedHandler)
       }
       marker.onDestroy()

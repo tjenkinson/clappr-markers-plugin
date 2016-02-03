@@ -18,8 +18,17 @@ export default class Marker {
   }
 
   /*
+   * Call this to notify the plugin that the time of the marker
+   * has changed so that it's position can be recalculated and changed
+   * if necessary.
+   */
+  notifyTimeChanged() {
+    this._emitter.emit("timeChanged")
+  }
+
+  /*
    * Call this to notify the plugin that the contents of the tooltip
-   * has changed so that's position can be recalculated and changed
+   * has changed so that it's position will be recalculated and changed
    * if necessary.
    */
   notifyTooltipChanged() {

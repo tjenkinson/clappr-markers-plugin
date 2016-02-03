@@ -16,7 +16,6 @@ export default class StandardMarker extends Marker {
     this._tooltipText = tooltipText || null
     this._$marker = this._buildMarkerEl()
     this._$tooltip = this._buildTooltipEl()
-
     this._addListeners()
   }
 
@@ -25,6 +24,14 @@ export default class StandardMarker extends Marker {
    */
   getTime() {
     return this._time
+  }
+
+  /*
+   * Set a new time for this marker.
+   */
+  setTime(time) {
+    this._time = time
+    this.notifyTimeChanged()
   }
 
   /*
