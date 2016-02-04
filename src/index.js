@@ -124,7 +124,6 @@ class MarkersPlugin extends UICorePlugin {
   _createMarkerEl(marker) {
     // marker
     var $marker = marker.$marker
-    var markerTime = marker.time
     marker.timeChangedHandler = () => {
       // fired from marker if it's time changes
       this._updateMarkerTime(marker)
@@ -132,7 +131,7 @@ class MarkersPlugin extends UICorePlugin {
     marker.emitter.on("timeChanged", marker.timeChangedHandler)
     $marker.click((e) => {
       // when marker clicked seek to the exact time represented by the marker
-      this.core.mediaControl.container.seek(markerTime)
+      this.core.mediaControl.container.seek(marker.time)
       e.preventDefault()
       e.stopImmediatePropagation()
     })
