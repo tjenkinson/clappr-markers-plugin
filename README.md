@@ -39,7 +39,13 @@ The first paramater to `StandardMarker` is the time in seconds that the marker r
 
 The `tooltipBottomMargin` option is optional and specifies the amount of space below tooltips. It defaults to 17.
 
-You can customise both the marker and the tooltip by extending the [`ClapprMarkersPlugin.Marker` class](src/marker.js). Look at the comments in that file for details. 
+You can customise both the marker and the tooltip by extending the [`ClapprMarkersPlugin.Marker` class](src/marker.js). Look at the comments in that file for details.
+
+## Updating The Time of a Marker
+You can update the time of a marker by calling the `setTime()` method on `StandardMarker`.
+
+## Adding and Removing Markers Programatically
+You can add a marker programatically by using the `addMarker()` method. To remove a marker use the `removeMarker()` method and provide the isntance to the `Marker` to remove as the first argument.
 
 # Demo
 To run the demo start a web server with the root directory being the root of this repo, and then browse to the "index.html" file in the "demo" folder.
