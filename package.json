@@ -11,7 +11,7 @@
   "license": "MIT",
   "repository": "tjenkinson/clappr-markers-plugin",
   "devDependencies": {
-    "babel-core": "^6.4.5",
+    "babel-core": "^6.7.4",
     "babel-loader": "^6.2.1",
     "clappr": "^0.2.13",
     "clean-webpack-plugin": "^0.1.3",
