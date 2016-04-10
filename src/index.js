@@ -1,11 +1,24 @@
-import 'babel-core/polyfill'
 import {UICorePlugin, Events} from 'clappr'
 import $ from 'jquery'
 import './style.sass'
 import Marker from "./marker"
 import StandardMarker from "./standard-marker"
 
-class MarkersPlugin extends UICorePlugin {
+export default class MarkersPlugin extends UICorePlugin {
+
+  static get Marker() {
+    return Marker
+  }
+
+  static get StandardMarker() {
+    return StandardMarker
+  }
+
+  // backwards compatibility
+  static get default() {
+    return MarkersPlugin
+  }
+
   get name() { return 'markers-plugin' }
 
   get attributes() {
@@ -250,6 +263,3 @@ class MarkersPlugin extends UICorePlugin {
   }
 }
 
-export default MarkersPlugin
-export {Marker as Marker}
-export {StandardMarker as StandardMarker}
