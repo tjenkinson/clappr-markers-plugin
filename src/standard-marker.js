@@ -1,4 +1,4 @@
-import $ from 'jquery'
+import {$} from 'clappr'
 import Marker from './marker'
 
 /*
@@ -71,10 +71,22 @@ export default class StandardMarker extends Marker {
       return
     }
 
-    this._$marker.hover(() => {
+    var $marker = this._$marker
+    var hovering = false
+    $marker.bind("mouseover", () => {
+      if (hovering) {
+        return
+      }
+      hovering = true
       this._$tooltip.attr("data-show", "1")
       this.notifyTooltipChanged()
-    }, () => {
+    })
+
+    $marker.bind("mouseout", () => {
+      if (!hovering) {
+        return
+      }
+      hovering = false
       this._$tooltip.attr("data-show", "0")
     })
   }

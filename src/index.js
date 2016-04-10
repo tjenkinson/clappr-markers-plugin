@@ -1,5 +1,4 @@
-import {UICorePlugin, Events} from 'clappr'
-import $ from 'jquery'
+import {UICorePlugin, Events, $} from 'clappr'
 import './style.sass'
 import Marker from "./marker"
 import StandardMarker from "./standard-marker"
