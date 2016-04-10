@@ -1,6 +1,7 @@
 @import compass/css3
 
 .markers-plugin
+  pointer-events: none
   .markers-plugin-markers
     overflow: hidden
     position: absolute
@@ -8,6 +9,8 @@
     bottom: 0
     left: 0
     right: 0
+    > *
+      pointer-events: auto
     .standard-marker
       position: absolute
       +translateX(-50%)
@@ -41,6 +44,8 @@
       position: absolute
       white-space: nowrap
       line-height: normal
+      > *
+        pointer-events: auto
       .standard-tooltip
         display: none
         background-color: rgba(2, 2, 2, 0.5)
