@@ -122,14 +122,14 @@ export default class MarkersPlugin extends UICorePlugin {
       return
     }
     this._markers = []
-    for(let a of markers) {
+    markers.forEach((a) => {
       this._markers.push(this._buildInternalMarker(a))
-    }
+    })
     
     // append the marker elements to the dom
-    for(let marker of this._markers) {
+    this._markers.forEach((marker) => {
       this._createMarkerEl(marker)
-    }
+    })
     this._renderMarkers()
   }
 
@@ -225,7 +225,7 @@ export default class MarkersPlugin extends UICorePlugin {
       return
     }
     var mediaDuration = this.core.mediaControl.container.getDuration()
-    for(let marker of this._markers) {
+    this._markers.forEach((marker) => {
       let $el = marker.$marker
       let percentage = Math.min(Math.max((marker.time/mediaDuration)*100, 0), 100)
       if (marker.markerLeft !== percentage) {
@@ -233,7 +233,7 @@ export default class MarkersPlugin extends UICorePlugin {
         marker.markerLeft = percentage
       }
       this._updateTooltipPosition(marker)
-    }
+    })
   }
 
   _appendElToMediaControl() {
@@ -252,13 +252,12 @@ export default class MarkersPlugin extends UICorePlugin {
 
   destroy() {
     // remove any listeners and call onDestroy()
-    for(let marker of this._markers) {
+    this._markers.forEach((marker) => {
       if (marker.tooltipChangedHandler) {
         marker.emitter.off("timeChanged", marker.timeChangedHandler)
         marker.emitter.off("tooltipChanged", marker.tooltipChangedHandler)
       }
       marker.onDestroy()
-    }
+    })
   }
 }
-
