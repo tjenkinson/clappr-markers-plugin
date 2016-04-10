@@ -28,8 +28,8 @@ export default class MarkersPlugin extends UICorePlugin {
 
   constructor(core) {
     super(core)
-    this._markers = []
-    this._createInitialMarkers()
+    this._markers = this._getOptions().markers || []
+    this._init()
   }
 
   bindEvents() {
@@ -42,7 +42,8 @@ export default class MarkersPlugin extends UICorePlugin {
    */
   addMarker(marker) {
     var internalMarker = this._buildInternalMarker(marker)
-    this._markers.push(internalMarker)
+    this._markers.push(marker)
+    this._internalMarkers.push(internalMarker)
     this._createMarkerEl(internalMarker)
     this._renderMarkers()
   }
@@ -52,19 +53,13 @@ export default class MarkersPlugin extends UICorePlugin {
    * Returns true if the marker was removed, false if it didn't exist.
    */
   removeMarker(marker) {
-    var internalMarker = null
-    var index = 0
-    this._markers.some((a) => {
-      if (a.source === marker) {
-        internalMarker = a
-        return true
-      }
-      index++
-      return false
-    })
-    if (!internalMarker) {
+    var index = this._markers.indexOf(marker)
+    if (index === -1) {
       return false
     }
+    var internalMarker = this._internalMarkers[index]
+    this._markers.splice(index, 1)
+    this._internalMarkers.splice(index, 1)
     internalMarker.$marker.remove()
     internalMarker.emitter.off("timeChanged", internalMarker.timeChangedHandler)
     if (internalMarker.$tooltipContainer) {
@@ -75,6 +70,10 @@ export default class MarkersPlugin extends UICorePlugin {
     }
     internalMarker.onDestroy()
     return true
+  }
+
+  _init() {
+    this._createInitialMarkers()
   }
 
   _bindContainerEvents() {
@@ -117,17 +116,14 @@ export default class MarkersPlugin extends UICorePlugin {
   }
 
   _createInitialMarkers() {
-    var markers = this._getOptions().markers
-    if (!markers) {
-      return
-    }
-    this._markers = []
+    var markers = this._markers
+    this._internalMarkers = []
     markers.forEach((a) => {
-      this._markers.push(this._buildInternalMarker(a))
+      this._internalMarkers.push(this._buildInternalMarker(a))
     })
     
     // append the marker elements to the dom
-    this._markers.forEach((marker) => {
+    this._internalMarkers.forEach((marker) => {
       this._createMarkerEl(marker)
     })
     this._renderMarkers()
@@ -200,7 +196,8 @@ export default class MarkersPlugin extends UICorePlugin {
   }
 
   _onMediaControlRendered() {
-    this._appendElToMediaControl()
+    this.destroy()
+    this._init()
   }
 
   _onMediaControlContainerChanged() {
@@ -225,7 +222,7 @@ export default class MarkersPlugin extends UICorePlugin {
       return
     }
     var mediaDuration = this.core.mediaControl.container.getDuration()
-    this._markers.forEach((marker) => {
+    this._internalMarkers.forEach((marker) => {
       let $el = marker.$marker
       let percentage = Math.min(Math.max((marker.time/mediaDuration)*100, 0), 100)
       if (marker.markerLeft !== percentage) {
@@ -252,12 +249,13 @@ export default class MarkersPlugin extends UICorePlugin {
 
   destroy() {
     // remove any listeners and call onDestroy()
-    this._markers.forEach((marker) => {
+    this._internalMarkers.forEach((marker) => {
       if (marker.tooltipChangedHandler) {
         marker.emitter.off("timeChanged", marker.timeChangedHandler)
         marker.emitter.off("tooltipChanged", marker.tooltipChangedHandler)
       }
       marker.onDestroy()
     })
+    this._internalMarkers = []
   }
 }
