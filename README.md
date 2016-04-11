@@ -22,7 +22,7 @@ Then just add `ClapprMarkersPlugin` into the list of plugins of your player inst
 var player = new Clappr.Player({
   source: "http://your.video/here.mp4",
   plugins: {
-    core: [ClapprMarkersPlugin.default]
+    core: [ClapprMarkersPlugin]
   },
   markersPlugin: {
     markers: [
