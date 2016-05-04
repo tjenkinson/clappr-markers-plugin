@@ -10,7 +10,7 @@ Add both Clappr and the markers plugin scripts to your HTML:
 ```html
 <head>
   <script type="text/javascript" src="http://cdn.clappr.io/latest/clappr.min.js"></script>
-  <script type="text/javascript" src="dist/clappr-markers-plugin.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/clappr.markers-plugin/latest/clappr-markers-plugin.js"></script>
 </head>
 ```
 
