@@ -14,7 +14,7 @@ export default class ImageMarker extends StandardMarker {
    */
   constructor (time, tooltipImage, width, height) {
     super(time, tooltipImage)
-    this._tooltipText = tooltipImage || null
+    this._tooltipContent = tooltipImage || null
     this._width = width || 200
     this._height = height || 'auto'
     this._$marker = this._buildMarkerEl()
@@ -23,10 +23,10 @@ export default class ImageMarker extends StandardMarker {
   }
 
   _buildTooltipEl () {
-    if (!this._tooltipText) {
+    if (!this._tooltipContent) {
       return null
     }
-    var $img = $('<img />').attr('src', this._tooltipText).css({
+    var $img = $('<img />').attr('src', this._tooltipContent).css({
       width: this._width,
       height: this._height
     })

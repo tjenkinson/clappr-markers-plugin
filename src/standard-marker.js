@@ -13,7 +13,7 @@ export default class StandardMarker extends Marker {
   constructor (time, tooltipText) {
     super()
     this._time = time
-    this._tooltipText = tooltipText || null
+    this._tooltipContent = tooltipText || null
     this._$marker = this._buildMarkerEl()
     this._$tooltip = this._buildTooltipEl()
     this._addListeners()
@@ -60,10 +60,10 @@ export default class StandardMarker extends Marker {
   }
 
   _buildTooltipEl () {
-    if (!this._tooltipText) {
+    if (!this._tooltipContent) {
       return null
     }
-    return $('<div />').addClass('standard-tooltip').text(this._tooltipText)
+    return $('<div />').addClass('standard-tooltip').text(this._tooltipContent)
   }
 
   _addListeners () {
