@@ -41,6 +41,9 @@ The `tooltipBottomMargin` option is optional and specifies the amount of space b
 
 You can customise both the marker and the tooltip by extending the [`ClapprMarkersPlugin.Marker` class](src/marker.js). Look at the comments in that file for details.
 
+## Image Marker
+`ImageMarker` works in the same way as `StandardMarker`, but the second parameter is a url to an image to show in the tooltip.
+
 ## Updating The Time of a Marker
 You can update the time of a marker by calling the `setTime()` method on `StandardMarker`.
 
