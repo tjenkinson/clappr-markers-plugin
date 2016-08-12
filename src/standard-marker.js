@@ -1,4 +1,4 @@
-import {$} from 'clappr'
+import { $ } from 'clappr'
 import Marker from './marker'
 
 /*
@@ -10,10 +10,10 @@ export default class StandardMarker extends Marker {
    * time: the time in seconds that this marker represents
    * tooltipText: the text to be shown on the tooltip (optional)
    */
-  constructor(time, tooltipText) {
+  constructor (time, tooltipText) {
     super()
     this._time = time
-    this._tooltipText = tooltipText || null
+    this._tooltipContent = tooltipText || null
     this._$marker = this._buildMarkerEl()
     this._$tooltip = this._buildTooltipEl()
     this._addListeners()
@@ -22,14 +22,14 @@ export default class StandardMarker extends Marker {
   /*
    * Should return the time (in seconds) that this marker represents.
    */
-  getTime() {
+  getTime () {
     return this._time
   }
 
   /*
    * Set a new time for this marker.
    */
-  setTime(time) {
+  setTime (time) {
     this._time = time
     this.notifyTimeChanged()
   }
@@ -38,7 +38,7 @@ export default class StandardMarker extends Marker {
    * Should return the dom element which should represent the marker.
    * It will be inserted onto the seek bar and kept at the correct location.
    */
-  getMarkerEl() {
+  getMarkerEl () {
     return this._$marker
   }
 
@@ -49,45 +49,45 @@ export default class StandardMarker extends Marker {
    * The tooltip will placed above the marker element, inside a container,
    * and this containers position will be managed for you.
    */
-  getTooltipEl() {
+  getTooltipEl () {
     return this._$tooltip
   }
 
-  _buildMarkerEl() {
-    var $marker = $("<div />").addClass("standard-marker")
-    $marker.append($("<div />").addClass("standard-marker-inner"))
+  _buildMarkerEl () {
+    var $marker = $('<div />').addClass('standard-marker')
+    $marker.append($('<div />').addClass('standard-marker-inner'))
     return $marker
   }
 
-  _buildTooltipEl() {
-    if (!this._tooltipText) {
-      return null;
+  _buildTooltipEl () {
+    if (!this._tooltipContent) {
+      return null
     }
-    return $("<div />").addClass("standard-tooltip").text(this._tooltipText)
+    return $('<div />').addClass('standard-tooltip').text(this._tooltipContent)
   }
 
-  _addListeners() {
+  _addListeners () {
     if (!this._$tooltip) {
       return
     }
 
     var $marker = this._$marker
     var hovering = false
-    $marker.bind("mouseover", () => {
+    $marker.bind('mouseover', () => {
       if (hovering) {
         return
       }
       hovering = true
-      this._$tooltip.attr("data-show", "1")
+      this._$tooltip.attr('data-show', '1')
       this.notifyTooltipChanged()
     })
 
-    $marker.bind("mouseout", () => {
+    $marker.bind('mouseout', () => {
       if (!hovering) {
         return
       }
       hovering = false
-      this._$tooltip.attr("data-show", "0")
+      this._$tooltip.attr('data-show', '0')
     })
   }
 

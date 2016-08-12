@@ -2,6 +2,7 @@ import {UICorePlugin, Events, $} from 'clappr'
 import './style.sass'
 import Marker from "./marker"
 import StandardMarker from "./standard-marker"
+import ImageMarker from "./image-marker"
 
 export default class MarkersPlugin extends UICorePlugin {
 
@@ -11,6 +12,10 @@ export default class MarkersPlugin extends UICorePlugin {
 
   static get StandardMarker() {
     return StandardMarker
+  }
+
+  static get ImageMarker() {
+    return ImageMarker
   }
 
   // backwards compatibility
