@@ -82,6 +82,24 @@ export default class MarkersPlugin extends UICorePlugin {
     return true
   }
 
+  /*
+   * Clear all existing markers
+   */
+  clearMarkers() {
+    this._markers.forEach(marker => {
+      marker.$marker.remove()
+      marker.emitter.off("timeChanged", marker.timeChangedHandler)
+      if (marker.$tooltipContainer) {
+        marker.$tooltipContainer.remove()
+      }
+      if (marker.tooltipChangedHandler) {
+        marker.emitter.off("tooltipChanged", marker.tooltipChangedHandler)
+      }
+      marker.onDestroy()
+    })
+    this._markers = []
+  }
+
   _bindContainerEvents() {
     if (this._oldContainer) {
       this.stopListening(this._oldContainer, Events.CONTAINER_TIMEUPDATE, this._onTimeUpdate)
