@@ -70,10 +70,11 @@ export default class MarkersPlugin extends UICorePlugin {
     if (!internalMarker) {
       return false
     }
-    return this._removeInternalMarker(internalMarker, index)
+    return this._removeInternalMarker(index)
   }
 
-  _removeInternalMarker(internalMarker, index) {
+  _removeInternalMarker(index) {
+    let internalMarker = this._markers[index]
     internalMarker.$marker.remove()
     internalMarker.emitter.off("timeChanged", internalMarker.timeChangedHandler)
     if (internalMarker.$tooltipContainer) {
@@ -91,22 +92,19 @@ export default class MarkersPlugin extends UICorePlugin {
    * Clear all existing markers
    */
   clearMarkers() {
-    let self = this
     if (!this._markers) {
       return
     } 
-    // Create a copy of the array since you cannot iterate and remove all its members correctly at the same time
-    let markersCopy = this._markers.slice(0)
-    markersCopy.forEach((marker, index) => {
-      self._removeInternalMarker(marker, index)
-    })
+    for (let i = this._markers.length - 1; i >= 0; i--) {
+      this._removeInternalMarker(i)
+    }
   }
 
   /*
    * Get all markers
    */
   getAll() {
-    return this._markers
+    return this._markers.map(internalMarker => internalMarker.source)
   }
 
   /*
@@ -116,7 +114,7 @@ export default class MarkersPlugin extends UICorePlugin {
     if (!this._markers || index > this._markers.length || index < 0) {
       return null
     }
-    return this._markers[index]
+    return this._markers[index].source
   }
 
   _bindContainerEvents() {
