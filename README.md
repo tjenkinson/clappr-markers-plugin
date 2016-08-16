@@ -48,7 +48,7 @@ You can customise both the marker and the tooltip by extending the [`ClapprMarke
 You can update the time of a marker by calling the `setTime()` method on `StandardMarker`.
 
 ## Adding and Removing Markers Programatically
-You can add a marker programatically by using the `addMarker()` method. To remove a marker use the `removeMarker()` method and provide the isntance to the `Marker` to remove as the first argument. To remove all markers use the `clearMarkers()` method.
+You can add a marker programatically by using the `addMarker()` method. To remove a marker use the `removeMarker()` method and provide the instance to the `Marker` to remove as the first argument. To remove all markers use the `clearMarkers()` method.
 
 # Demo
 To run the demo start a web server with the root directory being the root of this repo, and then browse to the "index.html" file in the "demo" folder.
