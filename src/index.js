@@ -70,6 +70,10 @@ export default class MarkersPlugin extends UICorePlugin {
     if (!internalMarker) {
       return false
     }
+    return this._removeInternalMarker(internalMarker, index)
+  }
+
+  _removeInternalMarker(internalMarker, index) {
     internalMarker.$marker.remove()
     internalMarker.emitter.off("timeChanged", internalMarker.timeChangedHandler)
     if (internalMarker.$tooltipContainer) {
@@ -79,6 +83,7 @@ export default class MarkersPlugin extends UICorePlugin {
       internalMarker.emitter.off("tooltipChanged", internalMarker.tooltipChangedHandler)
     }
     internalMarker.onDestroy()
+    this._markers.splice(index, 1)
     return true
   }
 
@@ -86,18 +91,32 @@ export default class MarkersPlugin extends UICorePlugin {
    * Clear all existing markers
    */
   clearMarkers() {
-    this._markers.forEach(marker => {
-      marker.$marker.remove()
-      marker.emitter.off("timeChanged", marker.timeChangedHandler)
-      if (marker.$tooltipContainer) {
-        marker.$tooltipContainer.remove()
-      }
-      if (marker.tooltipChangedHandler) {
-        marker.emitter.off("tooltipChanged", marker.tooltipChangedHandler)
-      }
-      marker.onDestroy()
+    let self = this
+    if (!this._markers) {
+      return
+    } 
+    // Create a copy of the array since you cannot iterate and remove all its members correctly at the same time
+    let markersCopy = this._markers.slice(0)
+    markersCopy.forEach((marker, index) => {
+      self._removeInternalMarker(marker, index)
     })
-    this._markers = []
+  }
+
+  /*
+   * Get all markers
+   */
+  getAll() {
+    return this._markers
+  }
+
+  /*
+   * Get marker by index. Can be used with removeMarker call to remove a marker by index
+   */
+  getByIndex(index) {
+    if (!this._markers || index > this._markers.length || index < 0) {
+      return null
+    }
+    return this._markers[index]
   }
 
   _bindContainerEvents() {
