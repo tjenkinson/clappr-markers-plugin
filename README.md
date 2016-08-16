@@ -56,6 +56,8 @@ To run the demo start a web server with the root directory being the root of thi
 I am also hosting a demo at http://tjenkinson.me/clappr-markers-plugin/
 
 # Development
+When submitting a PR please don't include changes to the dist folder.
+
 Install dependencies:
 
 `npm install`
