@@ -70,7 +70,8 @@ export default class MarkersPlugin extends UICorePlugin {
     if (!internalMarker) {
       return false
     }
-    return this._removeInternalMarker(index)
+    this._removeInternalMarker(index)
+    return true
   }
 
   _removeInternalMarker(index) {
@@ -85,7 +86,6 @@ export default class MarkersPlugin extends UICorePlugin {
     }
     internalMarker.onDestroy()
     this._markers.splice(index, 1)
-    return true
   }
 
   /*
@@ -108,10 +108,10 @@ export default class MarkersPlugin extends UICorePlugin {
   }
 
   /*
-   * Get marker by index. Can be used with removeMarker call to remove a marker by index
+   * Get marker by index. Can be used with removeMarker() to remove a marker by index.
    */
   getByIndex(index) {
-    if (!this._markers || index > this._markers.length || index < 0) {
+    if (index >= this._markers.length || index < 0) {
       return null
     }
     return this._markers[index].source
