@@ -39,10 +39,17 @@ export default class MarkersPlugin extends UICorePlugin {
   }
 
   bindEvents() {
+    if (Events.CORE_ACTIVE_CONTAINER_CHANGED) {
+      this.listenTo(this.core, Events.CORE_ACTIVE_CONTAINER_CHANGED, this.rebindEvents)
+    }
+
     this.listenTo(this.core.mediaControl, Events.MEDIACONTROL_RENDERED, this._onMediaControlRendered)
     this.listenTo(this.core.mediaControl, Events.MEDIACONTROL_CONTAINERCHANGED, this._onMediaControlContainerChanged)
   }
-
+ rebindEvents() {
+    this.stopListening()
+    this.bindEvents()
+  }
   /*
    * Add a new marker.
    */
