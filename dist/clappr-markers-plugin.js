@@ -574,8 +574,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/sass-loader/index.js?includePaths[]=/Users/maxwellsmith/Desktop/markers_dev/clappr-markers-plugin/node_modules/compass-mixins/lib!./style.sass", function() {
-				var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/sass-loader/index.js?includePaths[]=/Users/maxwellsmith/Desktop/markers_dev/clappr-markers-plugin/node_modules/compass-mixins/lib!./style.sass");
+			module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/sass-loader/index.js?includePaths[]=/Users/tomjenkinson/Documents/GitHub/clappr-markers-plugin/node_modules/compass-mixins/lib!./style.sass", function() {
+				var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/sass-loader/index.js?includePaths[]=/Users/tomjenkinson/Documents/GitHub/clappr-markers-plugin/node_modules/compass-mixins/lib!./style.sass");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
