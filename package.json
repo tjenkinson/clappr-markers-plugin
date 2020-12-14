@@ -1,6 +1,6 @@
 {
   "name": "clappr-markers-plugin",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "A plugin for clappr which will display markers at configured points scrub bar.",
   "main": "dist/clappr-markers-plugin.js",
   "scripts": {
